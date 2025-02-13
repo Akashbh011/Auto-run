@@ -2,7 +2,7 @@ require('dotenv').config();
 const polyline = require('polyline');
 const axios = require('axios');
 const googleMapsClient = require('@google/maps').createClient({
-  key: 'AIzaSyBy9LUQ79dQuVcopRbUdwL-nOfUoFjRGhk',
+  key: process.env.GOOGLE_MAPS_API_KEY,
   Promise: Promise
 });
 
@@ -258,10 +258,10 @@ async function runTrafficMonitoring() {
     const score  = await calculateTrafficScore(route);
 
     const timeRange = determineTimeRange(new Date()); 
-        const level = score >= 80 ? 'very high' :
-              score >= 60 ? 'high' :
-              score >= 30 ? 'medium' :
-              score >= 15 ? 'low' : 'very low';
+        const level = score.totalscore >= 80 ? 'very high' :
+              score.totalscore >= 60 ? 'high' :
+              score.totalscore >= 30 ? 'medium' :
+              score.totalscore >= 15 ? 'low' : 'very low';
     
     const pathInfo = {
         pathId: route.id,
