@@ -20,6 +20,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Debug Environment Variables
+        run: env  # Prints all available environment variables for debugging
+
       - name: Run Traffic Analysis Script
         env:
           GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
