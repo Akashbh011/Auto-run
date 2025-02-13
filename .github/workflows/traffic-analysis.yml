@@ -2,7 +2,7 @@ name: Traffic Analysis Automation
 
 on:
   schedule:
-    - cron: "*/1 * * * *"  # Runs every 10 minutes
+    - cron: "0 */2 * * *"  # Runs every 2 hours # Runs every 10 minutes
   workflow_dispatch:  # Allows manual trigger
 
 jobs:
