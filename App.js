@@ -5,7 +5,7 @@ const googleMapsClient = require('@google/maps').createClient({
   key: process.env.GOOGLE_MAPS_API_KEY,
   Promise: Promise
 });
-
+console.log(process.env.GOOGLE_MAPS_API_KEY);
 const routes = [
   {
     id: 'Kondhwa-Hinjewadi',
@@ -71,7 +71,7 @@ async function calculateTrafficScore(route) {
 
 
     const [potholes, complaints, spots,events, banquethalls, gardens, hospitals, hotels, malls, parkingbuildings, schools, diversions, constructions, trafficStatuses] = responses;
-    console.log("All SPOTS :--------",spots);
+    // console.log("All SPOTS :--------",spots);
     let customScore = 5 * potholes.length + 
                         10 * spots.length +
                        5 * complaints.length +
