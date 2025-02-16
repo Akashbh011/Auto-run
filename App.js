@@ -194,26 +194,29 @@ async function getTrafficStatusUsingJsApi(origin, destination) {
 
     const trafficFactor = durationInTraffic / normalDuration;
 
-    let trafficScore = trafficFactor > 1.95? 100 :
-                        trafficFactor > 1.90? 95 :
-                        trafficFactor > 1.85? 90 :
-                        trafficFactor > 1.80? 85 :
-                        trafficFactor > 1.75? 80 :
-                       trafficFactor > 1.70? 75 :
-                       trafficFactor > 1.65? 70 :
-                       trafficFactor > 1.60? 65 :
-                       trafficFactor > 1.55? 60 :
-                       trafficFactor > 1.50? 55 :
-                       trafficFactor > 1.45? 50 :
-                       trafficFactor > 1.40? 45 :
-                       trafficFactor > 1.35? 40 :
-                       trafficFactor > 1.30? 35 :
-                       trafficFactor > 1.25? 30 :
-                       trafficFactor > 1.20? 25 :
-                       trafficFactor > 1.15? 20 :
-                       trafficFactor > 1.10? 15 :
-                       trafficFactor > 1.05 ? 10 : 5;
+    let trafficScore = trafficFactor >= 1.5 ? 100 :
+                   trafficFactor >= 1.45 ? 95 :
+                   trafficFactor >= 1.40 ? 90 :
+                   trafficFactor >= 1.35 ? 85 :
+                   trafficFactor >= 1.30 ? 80 :
+                   trafficFactor >= 1.25 ? 75 :
+                   trafficFactor >= 1.20 ? 70 :
+                   trafficFactor >= 1.15 ? 65 :
+                   trafficFactor >= 1.10 ? 60 :
+                   trafficFactor >= 1.05 ? 55 :
+                   trafficFactor >= 1.00 ? 50 :
+                   trafficFactor >= 0.95 ? 45 :
+                   trafficFactor >= 0.90 ? 40 :
+                   trafficFactor >= 0.85 ? 35 :
+                   trafficFactor >= 0.80 ? 30 :
+                   trafficFactor >= 0.75 ? 25 :
+                   trafficFactor >= 0.70 ? 20 :
+                   trafficFactor >= 0.65 ? 15 :
+                   trafficFactor >= 0.60 ? 10 :
+                   trafficFactor >= 0.50 ? 5 : 5;
 
+
+    console.log(" google maps traffic factor : ----------->",trafficFactor);
     return { score: trafficScore };
   } catch (error) {
     console.error('Error fetching traffic status:', error);
