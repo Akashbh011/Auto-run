@@ -143,7 +143,7 @@ async function fetchData(endpoint, routeId, routePoints) {
     //   });
     // });
     console.log("Fetching data for route id: ", routeId);
-    const response = await axios.get(`https://road-traffic-backend.onrender.com/api${endpoint}?routeId=${routeId}`);
+    const response = await axios.get(`http://localhost:3001/api${endpoint}?routeId=${routeId}`);
     const data = response.data || [];
 
     // console.log(`endpoint : ${endpoint} data : ${data}`);
@@ -195,27 +195,27 @@ async function getTrafficStatusUsingJsApi(origin, destination) {
     const trafficFactor = durationInTraffic / normalDuration;
 
     let trafficScore = trafficFactor >= 1.5 ? 100 :
-                   trafficFactor >= 1.45 ? 95 :
-                   trafficFactor >= 1.40 ? 90 :
-                   trafficFactor >= 1.35 ? 85 :
-                   trafficFactor >= 1.30 ? 80 :
-                   trafficFactor >= 1.25 ? 75 :
+                  //  trafficFactor >= 1.45 ? 95 :
+                   trafficFactor >= 1.40 ? 95 :
+                  //  trafficFactor >= 1.35 ? 85 :
+                   trafficFactor >= 1.30 ? 85 :
+                  //  trafficFactor >= 1.25 ? 75 :
                    trafficFactor >= 1.20 ? 70 :
-                   trafficFactor >= 1.15 ? 65 :
+                  //  trafficFactor >= 1.15 ? 65 :
                    trafficFactor >= 1.10 ? 60 :
-                   trafficFactor >= 1.05 ? 55 :
-                   trafficFactor >= 1.00 ? 50 :
-                   trafficFactor >= 0.95 ? 45 :
-                   trafficFactor >= 0.90 ? 40 :
-                   trafficFactor >= 0.85 ? 35 :
-                   trafficFactor >= 0.80 ? 30 :
-                   trafficFactor >= 0.75 ? 25 :
-                   trafficFactor >= 0.70 ? 20 :
-                   trafficFactor >= 0.65 ? 15 :
-                   trafficFactor >= 0.60 ? 10 :
-                   trafficFactor >= 0.50 ? 5 : 5;
+                  //  trafficFactor >= 1.05 ? 55 :
+                   trafficFactor >= 1.00 ? 30 :
+                  //  trafficFactor >= 0.95 ? 45 :
+                  //  trafficFactor >= 0.90 ? 40 :
+                  //  trafficFactor >= 0.85 ? 35 :
+                   trafficFactor >= 0.80 ? 20 :
+                  //  trafficFactor >= 0.75 ? 25 :
+                  //  trafficFactor >= 0.70 ? 20 :
+                  //  trafficFactor >= 0.65 ? 15 :
+                  //  trafficFactor >= 0.60 ? 10 :
+                   trafficFactor >= 0.50 ? 10 : 5;
 
-
+    // 0.5-0.8
     console.log(" google maps traffic factor : ----------->",trafficFactor);
     return { score: trafficScore };
   } catch (error) {
@@ -229,7 +229,7 @@ async function storePathInfo(pathInfo) {
 
 
     console.log("Storing path info: ", pathInfo);
-    const response = await axios.post(`https://road-traffic-backend.onrender.com/api/path-info/`,pathInfo);
+    const response = await axios.post(`http://localhost:3001/api/path-info/`,pathInfo);
 
 
   } catch (error) {
