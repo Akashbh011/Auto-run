@@ -143,7 +143,7 @@ async function fetchData(endpoint, routeId, routePoints) {
     //   });
     // });
     console.log("Fetching data for route id: ", routeId);
-    const response = await axios.get(`http://localhost:3001/api${endpoint}?routeId=${routeId}`);
+    const response = await axios.get(`https://road-traffic-backend.onrender.com/api${endpoint}?routeId=${routeId}`);
     const data = response.data || [];
 
     // console.log(`endpoint : ${endpoint} data : ${data}`);
@@ -229,7 +229,7 @@ async function storePathInfo(pathInfo) {
 
 
     console.log("Storing path info: ", pathInfo);
-    const response = await axios.post(`http://localhost:3001/api/path-info/`,pathInfo);
+    const response = await axios.post(`https://road-traffic-backend.onrender.com/api/path-info/`,pathInfo);
 
 
   } catch (error) {
